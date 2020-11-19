@@ -1,0 +1,16 @@
+.Chat {
+  border: 1px solid gray;
+  border-radius: 8px;
+  overflow: auto;
+  height: calc(100vh - 200px);
+  &__message {
+    display: flex;
+    justify-content: flex-start;
+    & + & {
+      margin-top: 8px;
+    }
+    &_own {
+      justify-content: flex-end;
+    }
+  }
+}
