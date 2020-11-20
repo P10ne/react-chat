@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import {block} from 'bem-cn';
 import './Chat.scss';
 import Message from "../Message";
-import {MessageStatus} from "../../types/Message";
+import {MessageStatus} from "../../redux/store/messages/types/MessageStatus";
 
 type ChatProps = {};
 const cn = block('Chat');
