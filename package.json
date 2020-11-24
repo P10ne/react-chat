@@ -10,6 +10,7 @@
     "@types/bem-cn": "^3.0.0",
     "@types/react-router-dom": "^5.1.6",
     "antd": "^4.8.4",
+    "axios": "^0.21.0",
     "bem-cn": "^3.0.1",
     "http-proxy-middleware": "^1.0.6",
     "less": "^3.10.3",

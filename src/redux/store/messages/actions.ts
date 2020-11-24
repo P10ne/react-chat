@@ -1,7 +1,7 @@
 import {Messages} from "./types/Messages";
 import {
   ActionType,
-  FetchMessages,
+  FetchMessagesAction,
   FetchMessagesPayload,
   SetMessagesAction,
   SetMessagesFetchErrorAction,
@@ -23,7 +23,7 @@ export const startLoading = (): StartFetchingMessagesAction => ({
 export const stopLoading = (): StopFetchingMessagesAction => ({
   type: ActionType.STOP_LOADING
 });
-export const getMessages = ({chatId}: FetchMessagesPayload): FetchMessages => ({
+export const fetchMessages = ({chatId}: FetchMessagesPayload): FetchMessagesAction => ({
   type: ActionType.FETCH,
   payload: {
     chatId

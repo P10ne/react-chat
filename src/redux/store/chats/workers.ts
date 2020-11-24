@@ -1,13 +1,13 @@
-import {FetchMessagesAction} from "./types/actions";
+import {FetchChatsAction, SetSelectedChatAction} from "./types/actions";
 import {RequestMethod, sendRequest} from "../../utils/request";
 import API from "../../../constants/api";
-import {setData, setError, startLoading, stopLoading} from "./actions";
+import {startLoading, stopLoading, setData, setError} from './actions';
 
-export function* getMessages({payload: {chatId}}: FetchMessagesAction) {
+export function* getChats({payload: {searchQuery}}: FetchChatsAction) {
   yield sendRequest(
     {
-      method: RequestMethod.GET,
-      url: ''
+      method: RequestMethod.POST,
+      url: API.CHATS
     },
     {
       startFetchingAction: startLoading,

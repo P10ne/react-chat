@@ -22,11 +22,10 @@ export type SetMessagesFetchErrorAction = SetFetchingErrorAction<ActionType.SET_
 export type FetchMessagesPayload = {
   chatId: number;
 }
-export type FetchMessages = FetchAction<ActionType.FETCH, FetchMessagesPayload>;
+export type FetchMessagesAction = FetchAction<ActionType.FETCH, FetchMessagesPayload>;
 
 export type MessagesActionTypes =
   | StartFetchingMessagesAction
   | StopFetchingMessagesAction
   | SetMessagesAction
-  | SetMessagesFetchErrorAction
-  | FetchMessages;
+  | SetMessagesFetchErrorAction;
