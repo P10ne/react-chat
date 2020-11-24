@@ -3,9 +3,12 @@
   align-items: center;
   padding: 6px 10px;
   border-radius: 5px;
-  cursor: pointer;
-  &:hover {
+  &_selected {
+    background-color: #1890ff;
+  }
+  &:hover:not(&_selected) {
     background-color: #efefef;
+    cursor: pointer;
   }
   &__avatar {
 

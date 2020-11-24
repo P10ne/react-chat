@@ -33,7 +33,7 @@ export const fetchChats = ({searchQuery}: FetchChatsPayload = {}): FetchChatsAct
     searchQuery
   }
 });
-export const setSelected = (chat: SetSelectedChatPayload): SetSelectedChatAction => ({
+export const setSelectedChat = (chat: SetSelectedChatPayload): SetSelectedChatAction => ({
   type: ActionType.SET_SELECTED,
   payload: chat
 });

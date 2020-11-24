@@ -8,6 +8,7 @@ type ChatProps = {};
 const cn = block('Chat');
 
 const Chat: FC<ChatProps> = () => {
+
   const datasource: Array<{
     type: 'message'
     content: string;
