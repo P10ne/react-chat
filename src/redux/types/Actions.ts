@@ -14,7 +14,7 @@ export type SetFetchingErrorAction<T, U = HttpError> = {
   type: T;
   error: U;
 };
-export type FetchAction<T, U> = {
+export type FetchAction<T, U = any> = {
   type: T;
   payload: U;
 };

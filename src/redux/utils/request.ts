@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {put} from 'redux-saga/effects';
 import {AccessToken} from "../types/AccessToken";
 import {getAccessToken} from "./tokens";
@@ -30,7 +30,7 @@ type ActionArgs = {
 
 export function* sendRequest(requestArgs: RequestArgs, actionArgs: ActionArgs) {
   const {method, url, body, headers} = requestArgs;
-  const {startFetchingAction, stopFetchingAction, setDataAction, setFetchingErrorAction} = actionArgs;
+  const {startFetchingAction, stopFetchingAction, setDataAction} = actionArgs;
   if (startFetchingAction) {yield put(startFetchingAction())}
   try {
     const response = yield sendSimpleRequest({
@@ -82,3 +82,7 @@ function makeRequest(args: RequestArgs) {
     }
   }).then(response => response.data);
 }
+
+export const isRequestSuccess = (response: AxiosResponse): boolean => {
+  return response.status === 200;
+};
