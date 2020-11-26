@@ -3,12 +3,14 @@ import {all, call} from 'redux-saga/effects';
 import {watcher as messagesWatcher} from "../store/messages/watchers";
 import {watcher as chatsWatcher} from '../store/chats/watchers';
 import {watcher as profileWatcher} from '../store/profile/watchers';
+import {watcher as authWatcher} from '../store/auth/watchers';
 
 export function* rootSaga() {
   yield all([
     call(messagesWatcher),
     call(chatsWatcher),
-    call(profileWatcher)
+    call(profileWatcher),
+    call(authWatcher)
   ])
 }
 

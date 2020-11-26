@@ -6,6 +6,7 @@ import {setAuthStatus} from "../../redux/store/auth/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {profileDataSelector} from "../../redux/store/profile/selectors";
 import {isLoginCheckedSelector, isLoginedSelector} from "../../redux/store/auth/selectors";
+import ROUTES from "../../constants/routes";
 
 type PrivateRouteProps = RouteProps & {}
 
@@ -27,7 +28,6 @@ const PrivateRoute: FC<PrivateRouteProps> = ({children, ...rest}) => {
     }
   }, [dispatch, profileData]);
 
-  // todo redirect if !isLogined
   const component = () => {
     if (!authChecked) {
       return <p>Спинер при проверке авторизации...</p>
@@ -38,7 +38,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({children, ...rest}) => {
       return (
         <Redirect
           to={{
-            pathname: ''
+            pathname: ROUTES.LOGIN_PATH
           }}
         />)
     }

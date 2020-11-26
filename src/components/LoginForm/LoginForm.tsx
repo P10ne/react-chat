@@ -1,15 +1,16 @@
 import React, {FC} from "react";
-import {useHistory} from 'react-router-dom';
 import {Form, Input, Card, Button} from 'antd';
-import ROUTES from "../../constants/routes";
+import {useDispatch} from "react-redux";
+import {fetchLogin} from "../../redux/store/auth/actions";
 
 type LoginFormProps = {};
+type LoginFormData = {login: string; password: string;}
 
 const LoginForm: FC<LoginFormProps> = () => {
-  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const onFinish = () => {
-    history.replace({pathname: ROUTES.MAIN_PATH})
+  const onFinish = (loginFormData: LoginFormData) => {
+    dispatch(fetchLogin(loginFormData));
   };
 
   return (
