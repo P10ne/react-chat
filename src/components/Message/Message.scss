@@ -1,6 +1,32 @@
 .Message {
-  background-color: white;
-  border: 1px solid #efefef;
-  border-radius: 5px;
-  padding: 5px 7px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  & + & {
+    margin-top: 8px;
+  }
+  &_own {
+    justify-content: flex-end;
+    .Message__metainfo {
+      justify-content: flex-end;
+    }
+  }
+  &__content {
+    border: 1px solid #efefef;
+  }
+  &__metainfo {
+    display: flex;
+  }
+  &__date {
+    margin-right: 25px;
+  }
+  &__status {
+    display: flex;
+    align-items: center;
+    &_value {
+      &_read {
+        color: #1890ff;
+      }
+    }
+  }
 }

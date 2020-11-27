@@ -1,53 +1,47 @@
-import React, {FC} from "react";
+import React, {FC, MutableRefObject, useEffect, useRef} from "react";
 import {block} from 'bem-cn';
 import './Chat.scss';
 import Message from "../Message";
 import {MessageStatus} from "../../redux/store/messages/types/MessageStatus";
+import {useSelector} from "react-redux";
+import {messagesSelector} from "../../redux/store/messages/selectors";
+import {MessageContent} from "../../redux/store/messages/types/Message";
+import {profileDataSelector} from "../../redux/store/profile/selectors";
 
 type ChatProps = {};
+type PreparedMessage = {
+  type: 'message'
+  content: MessageContent;
+  isOwn: boolean;
+  createdAt: string;
+  status: MessageStatus;
+}
+
 const cn = block('Chat');
 
 const Chat: FC<ChatProps> = () => {
-
-  const datasource: Array<{
-    type: 'message'
-    content: string;
-    isOwn?: boolean;
-    date: string;
-    status: MessageStatus;
-  }> = [
-    {
-      content: 'message 1',
-      date: '13:55',
-      status: 'read',
-      type: "message"
-    },
-    {
-      content: 'message 2',
-      date: '11:55',
-      status: 'sent',
-      type: "message",
-      isOwn: true
-    },
-    {
-      content: 'message 3',
-      date: '10:30',
-      status: 'received',
-      type: "message"
-    },
-    {
-      content: 'message 4',
-      date: '10:20',
-      status: 'sending',
-      type: "message"
+  const messages = useSelector(messagesSelector);
+  const profileData = useSelector(profileDataSelector);
+  const preparedMessages: Array<PreparedMessage> = messages.map(message => {
+    return {
+      status: message.status,
+      type: message.type,
+      content: message.content,
+      createdAt: message.createdAt,
+      isOwn: message.user.id === profileData?.id
     }
-  ];
+  });
+
   return (
     <section className={cn()}>
-      {datasource?.map(message =>
-        <div className={cn('message', {own: message.isOwn})}>
-          <Message text={message.content} date={message.date} status={message.status} />
-        </div>
+      {preparedMessages.map(message =>
+        <Message
+          content={message.content}
+          date={message.createdAt}
+          status={message.status}
+          isOwn={message.isOwn}
+          type={message.type}
+        />
       )}
     </section>
   );

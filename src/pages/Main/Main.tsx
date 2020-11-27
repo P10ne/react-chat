@@ -12,8 +12,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchChats} from "../../redux/store/chats/actions";
 import {activeChatSelector} from "../../redux/store/chats/selectors";
 import {profileDataSelector} from "../../redux/store/profile/selectors";
-import {setAuthStatus} from "../../redux/store/auth/actions";
-import {fetchProfile} from "../../redux/store/profile/actions";
 
 type MainPageProps = {};
 
@@ -22,7 +20,6 @@ const cn = block('MainPage');
 const MainPage: FC<MainPageProps> = () => {
   const dispatch = useDispatch();
   const activeChat = useSelector(activeChatSelector);
-  const profileData = useSelector(profileDataSelector);
 
   useEffect(() => {
     dispatch(fetchChats());
@@ -52,7 +49,7 @@ const MainPage: FC<MainPageProps> = () => {
                 <Row>
                   <Col flex='auto'>
                     <div className={cn('col-header')}>
-                      <ChatSubheader title='Заголовок' subTitle='Подзаголовок'/>
+                      <ChatSubheader title={activeChat.name} subTitle='meta'/>
                     </div>
                   </Col>
                 </Row>
