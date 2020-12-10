@@ -2,23 +2,31 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  padding: 0 7px;
   & + & {
     margin-top: 8px;
   }
   &_own {
-    justify-content: flex-end;
+    flex-direction: row-reverse;
     .Message__metainfo {
       justify-content: flex-end;
     }
   }
   &__content {
     border: 1px solid #efefef;
+    padding: 5px 8px;
+    border-radius: 10px;
+    &_userspace {
+      margin-left: 39px;
+    }
   }
   &__metainfo {
     display: flex;
   }
   &__date {
     margin-right: 25px;
+    font-weight: 300;
+    font-size: 10px;
   }
   &__status {
     display: flex;
@@ -28,5 +36,16 @@
         color: #1890ff;
       }
     }
+  }
+  &__user {
+    & + .Message__content {
+      margin-left: 7px;
+    }
+  }
+  &__username {
+    display: block;
+    font-weight: 500;
+    line-height: 14px;
+    color: #1890ff;
   }
 }

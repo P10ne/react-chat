@@ -32,8 +32,6 @@ export function* login({payload: {login, password}}: LoginFetchAction) {
 
     yield getProfile();
     yield put(setAuthStatus({isLogined: true}));
-
-    //todo Обработать ошибку
   } catch (e) {
     console.error(e);
   } finally {

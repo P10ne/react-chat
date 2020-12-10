@@ -38,7 +38,7 @@ const UsersList: FC<UsersListProps> = () => {
 
   const loadingNode =
     <>
-      {new Array(5).fill(0).map(item => <Skeleton active avatar paragraph={{rows: 0}} />)}
+      {new Array(5).fill(0).map((item, index) => <Skeleton active avatar paragraph={{rows: 0}} key={index}/>)}
     </>;
 
   const errorNode =

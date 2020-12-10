@@ -5,5 +5,6 @@ export type Chat = {
     id: number;
     login: string;
   }>,
+  isGroup: boolean;
   unreadMessagesCount: number;
 }

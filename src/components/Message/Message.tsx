@@ -1,11 +1,13 @@
 import React, {FC} from "react";
+import {Avatar} from 'antd';
+import {UserOutlined} from '@ant-design/icons';
 import {CheckOutlined, CheckCircleOutlined, FieldTimeOutlined} from "@ant-design/icons";
 import {block} from 'bem-cn';
 
 import './Message.scss';
-import {MessageStatus} from "../../redux/store/messages/types/MessageStatus";
 import {MessageContent, MessageType} from "../../redux/store/messages/types/Message";
 import TextMessage from "./content/TextMessage/TextMessage";
+import {User} from "../../redux/types/User";
 
 const cn = block('Message');
 export type MessageStatusProp = 'sending' | 'sent' | 'read';
@@ -15,13 +17,25 @@ type MessageProps = {
   date: string;
   status: MessageStatusProp;
   isOwn: boolean;
-  type: MessageType
+  type: MessageType,
+  user?: User
+  userSpace?: boolean
 };
 
-const Message: FC<MessageProps> = ({content, status, date, isOwn, type}) => {
+const Message: FC<MessageProps> = ({content, status, date, isOwn, type, user, userSpace}) => {
   return (
     <div className={cn( {own: isOwn})}>
-      <span className={cn('content')}>
+      {
+        !isOwn && user &&
+          <span className={cn('user')}>
+            <Avatar icon={<UserOutlined/>} />
+          </span>
+      }
+      <span className={cn('content', {userspace: userSpace})}>
+        {
+          !isOwn && user &&
+            <span className={cn('username')}>{user.login}</span>
+        }
         {type === "message" &&
           <TextMessage text={content.text}/>
         }

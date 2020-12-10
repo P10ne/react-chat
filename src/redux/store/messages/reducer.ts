@@ -42,8 +42,6 @@ export default function(state: MessagesState = initialState, action: MessagesAct
     case ActionType.MARK_AS_READ:
       const messages = [...state.data];
       const newMessages = messages.map(message => {
-        // todo ignore
-        // @ts-ignore
         const messageToUpdate = action.payload.find(readMessage => readMessage.id === message.id);
         if (messageToUpdate) {
           return messageToUpdate;

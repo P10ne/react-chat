@@ -50,7 +50,6 @@ export function* sendRequest(requestArgs: RequestArgs, actionArgs: ActionArgs) {
 }
 
 function* sendAuthorizedRequest(args: RequestArgs): any {
-  // todo проверка на expires токена
   const TIME_BEFORE_TOKEN_EXPIRED = 10000;
   const {method, url, body, headers} = args;
   const accessToken = getAccessToken();

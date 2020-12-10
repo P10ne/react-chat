@@ -47,7 +47,6 @@ export default function(state: ChatsState = initialState, action: ChatsActionTyp
         ...state,
         active: null
       };
-      // todo Вынести в функцию код из двух нижних кейсов
     case ActionType.INCREMENT_UNREAD_COUNT:
       const newChats = [...state.data];
       const newChat = newChats.find(chat => chat.id === action.payload.chatId);
