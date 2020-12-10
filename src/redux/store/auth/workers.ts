@@ -8,6 +8,7 @@ import {AccessToken} from "../../types/AccessToken";
 import {RefreshToken} from "../../types/RefreshToken";
 import {User} from "../../types/User";
 import {clearTokens, setAccessToken, setRefreshToken} from "../../utils/tokens";
+import {getProfile} from "../profile/workers";
 
 type LoginResponse = {
   accessToken: AccessToken;
@@ -29,6 +30,7 @@ export function* login({payload: {login, password}}: LoginFetchAction) {
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
 
+    yield getProfile();
     yield put(setAuthStatus({isLogined: true}));
 
     //todo Обработать ошибку

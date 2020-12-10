@@ -15,7 +15,9 @@ export enum ActionType {
   SET_ERROR = `CHATS/SET_ERROR`,
   FETCH = 'CHATS/FETCH',
   SET_SELECTED = 'CHATS/SET_SELECTED',
-  CLEAR_SELECTED = 'CHATS/CLEAR_SELECTED'
+  CLEAR_SELECTED = 'CHATS/CLEAR_SELECTED',
+  INCREMENT_UNREAD_COUNT = 'CHATS/INCREMENT_UNREAD_COUNT',
+  RESET_UNREAD_COUNT = 'RESET_UNREAD_COUNT'
 }
 
 export type StartFetchingChatsAction = StartFetchingAction<ActionType.START_LOADING>;
@@ -35,6 +37,20 @@ export type SetSelectedChatAction = {
 export type ClearSelectedChatAction = {
   type: ActionType.CLEAR_SELECTED
 }
+export type IncrementUnreadCountActionPayload = {
+  chatId: number;
+}
+export type IncrementUnreadCountAction = {
+  type: ActionType.INCREMENT_UNREAD_COUNT,
+  payload: IncrementUnreadCountActionPayload
+}
+export type ResetUnreadCountActionPayload = {
+  chatId: number;
+}
+export type ResetUnreadCountAction = {
+  type: ActionType.RESET_UNREAD_COUNT,
+  payload: ResetUnreadCountActionPayload
+}
 
 export type ChatsActionTypes =
   | StartFetchingChatsAction
@@ -42,4 +58,6 @@ export type ChatsActionTypes =
   | SetChatsAction
   | SetChatsFetchErrorAction
   | SetSelectedChatAction
-  | ClearSelectedChatAction;
+  | ClearSelectedChatAction
+  | IncrementUnreadCountAction
+  | ResetUnreadCountAction

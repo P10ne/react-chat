@@ -1,4 +1,4 @@
 import {RootState} from "../index";
-import {Messages} from "./types/Messages";
+import {MessagesState} from "./reducer";
 
-export const messagesSelector = (state: RootState): Messages => state.messages.data;
+export const messagesSelector = (state: RootState): MessagesState => state.messages;

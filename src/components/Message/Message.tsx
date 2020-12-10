@@ -8,10 +8,12 @@ import {MessageContent, MessageType} from "../../redux/store/messages/types/Mess
 import TextMessage from "./content/TextMessage/TextMessage";
 
 const cn = block('Message');
+export type MessageStatusProp = 'sending' | 'sent' | 'read';
+
 type MessageProps = {
   content: MessageContent;
   date: string;
-  status: MessageStatus;
+  status: MessageStatusProp;
   isOwn: boolean;
   type: MessageType
 };
@@ -29,7 +31,6 @@ const Message: FC<MessageProps> = ({content, status, date, isOwn, type}) => {
             isOwn &&
               <span className={cn('status', {value: status})}>
                 {status === "sent" && <CheckOutlined />}
-                {status === "received" && <CheckCircleOutlined />}
                 {status === "read" && <CheckCircleOutlined/>}
                 {status === "sending" && <FieldTimeOutlined />}
               </span>

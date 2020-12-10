@@ -3,6 +3,10 @@ import {
   ClearSelectedChatAction,
   FetchChatsAction,
   FetchChatsPayload,
+  IncrementUnreadCountAction,
+  IncrementUnreadCountActionPayload,
+  ResetUnreadCountAction,
+  ResetUnreadCountActionPayload,
   SetChatsAction,
   SetChatsFetchErrorAction,
   SetSelectedChatAction,
@@ -37,6 +41,20 @@ export const setSelectedChat = (chat: SetSelectedChatPayload): SetSelectedChatAc
   type: ActionType.SET_SELECTED,
   payload: chat
 });
+
+export const incrementUnreadCount = ({chatId}: IncrementUnreadCountActionPayload): IncrementUnreadCountAction => ({
+  type: ActionType.INCREMENT_UNREAD_COUNT,
+  payload: {
+    chatId
+  }
+});
+
+export const resetUnreadCount = ({chatId}: ResetUnreadCountActionPayload): ResetUnreadCountAction => ({
+  type: ActionType.RESET_UNREAD_COUNT,
+  payload: {
+    chatId
+  }
+})
 export const clearSelected = (): ClearSelectedChatAction => ({
   type: ActionType.CLEAR_SELECTED
 });

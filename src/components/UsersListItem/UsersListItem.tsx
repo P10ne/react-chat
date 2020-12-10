@@ -7,13 +7,14 @@ import './UsersListItem.scss';
 type UsersListItemProps = {
   avatarSrc?: string;
   name: string;
+  unreadMessagesCount: number;
   selected?: boolean;
   children?: never;
   onClick?: (event: SyntheticEvent) => void;
 };
 const cn = block('UsersListItem');
 
-const UsersListItem: FC<UsersListItemProps> = ({name, selected, onClick}) => {
+const UsersListItem: FC<UsersListItemProps> = ({name, selected, onClick, unreadMessagesCount}) => {
   return (
     <div className={cn({selected})} onClick={(e) => onClick && onClick(e)}>
       <div className={cn('avatar')}>
@@ -26,6 +27,12 @@ const UsersListItem: FC<UsersListItemProps> = ({name, selected, onClick}) => {
         <span className={cn('meta')}>
           meta
         </span>
+        {
+          !selected && unreadMessagesCount > 0 &&
+            <span className={cn('unread')}>
+              {unreadMessagesCount}
+            </span>
+        }
       </div>
     </div>
   )

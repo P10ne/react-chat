@@ -4,5 +4,6 @@ export type Chat = {
   members: Array<{
     id: number;
     login: string;
-  }>
+  }>,
+  unreadMessagesCount: number;
 }

@@ -6,6 +6,7 @@ export type MessageContent = TextMessageContent;
 export type MessageType = 'message'; // ...
 
 export interface Message {
+  id?: number;
   type: MessageType;
   content: MessageContent;
   createdAt: string;

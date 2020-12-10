@@ -9,12 +9,15 @@ const PROFILE = `${USERS}/me`;
 const CHATS = `${ROOT}/chats`;
 const MESSAGES = `${ROOT}/messages/chatId=:chatId`;
 
+const SOCKETS = `http://localhost:4000`;
+
 const API = {
   PROFILE,
   CHATS,
   MESSAGES,
   LOGIN_LOGIN,
-  LOGIN_REFRESH
+  LOGIN_REFRESH,
+  SOCKETS
 };
 
 export default API;

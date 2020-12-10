@@ -3,7 +3,7 @@ import {Chats} from "./types/Chats";
 import {ActionType, ChatsActionTypes} from "./types/actions";
 import {Chat} from './types/Chat';
 
-type ChatsState = Status & {
+export type ChatsState = Status & {
   data: Chats,
   active: Chat | null
 }
@@ -46,6 +46,23 @@ export default function(state: ChatsState = initialState, action: ChatsActionTyp
       return {
         ...state,
         active: null
+      };
+      // todo Вынести в функцию код из двух нижних кейсов
+    case ActionType.INCREMENT_UNREAD_COUNT:
+      const newChats = [...state.data];
+      const newChat = newChats.find(chat => chat.id === action.payload.chatId);
+      if (newChat) newChat.unreadMessagesCount++;
+      return {
+        ...state,
+        data: newChats
+      };
+    case ActionType.RESET_UNREAD_COUNT:
+      const newChats1 = [...state.data];
+      const newChat1 = newChats1.find(chat => chat.id === action.payload.chatId);
+      if (newChat1) newChat1.unreadMessagesCount = 0;
+      return {
+        ...state,
+        data: newChats1
       };
     default: return state;
   }

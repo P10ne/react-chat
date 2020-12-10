@@ -1,1 +1,5 @@
-export type MessageStatus = 'sending' | 'sent' | 'received' | 'read';
+export type MessageStatus = {
+  sending?: true,
+  sent?: true,
+  read?: Array<number>
+}

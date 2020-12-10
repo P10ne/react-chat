@@ -1,6 +1,5 @@
 import React, {FC, useEffect} from "react";
-import {Row, Col, Card, Input, Button} from 'antd';
-import {ArrowRightOutlined} from '@ant-design/icons';
+import {Row, Col, Card, Input} from 'antd';
 import {block} from 'bem-cn';
 import Layout from "../../components/Layout/Layout";
 import './Main.scss';
@@ -11,7 +10,6 @@ import MessageInput from "../../components/MessageInput";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchChats} from "../../redux/store/chats/actions";
 import {activeChatSelector} from "../../redux/store/chats/selectors";
-import {profileDataSelector} from "../../redux/store/profile/selectors";
 
 type MainPageProps = {};
 
@@ -58,12 +56,9 @@ const MainPage: FC<MainPageProps> = () => {
                     <Chat />
                   </Col>
                 </Row>
-                <Row gutter={[10, 15]}>
+                <Row>
                   <Col flex='auto'>
                     <MessageInput/>
-                  </Col>
-                  <Col flex='none'>
-                    <Button type='primary' icon={<ArrowRightOutlined/>} />
                   </Col>
                 </Row>
               </Col>
